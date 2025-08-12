@@ -105,7 +105,7 @@ body {
     }
     .mwg_effect019 {
         flex-direction: column;
-        height: 100vh;
+        height: 100dvh;
     }
     .mwg_effect019 .header {
         position: relative;
