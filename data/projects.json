@@ -1,0 +1,73 @@
+{
+  "sections": [
+    {
+      "id": "featured",
+      "title": "// featured",
+      "description": null,
+      "projects": [
+        {
+          "name": "CSGO-API",
+          "description": "Unofficial JSON API for Counter-Strike 2 in multiples languages. List of skins, cases, stickers, collections, collectibles, agents, graffiti, keys, patches and music kits.",
+          "tags": ["counter-strike", "api", "json"],
+          "demo": "https://bymykel.com/CSGO-API/",
+          "source": "https://github.com/ByMykel/CSGO-API",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "personal",
+      "title": "// personal",
+      "description": "Products built to provide solutions for various problems.",
+      "projects": [
+        {
+          "name": "counter-strike-items",
+          "description": "Browse all Counter-Strike 2 skins, knives, gloves, cases, collections, stickers, music kits, and more.",
+          "tags": ["counter-strike", "vue"],
+          "demo": "https://bymykel.com/counter-strike-items/",
+          "source": "https://github.com/ByMykel/counter-strike-items",
+          "image": "img/counter-strike-items.png"
+        },
+        {
+          "name": "counter-strike-image-tracker",
+          "description": "Track Counter-Strike 2 images.",
+          "tags": ["counter-strike"],
+          "demo": null,
+          "source": "https://github.com/ByMykel/counter-strike-image-tracker",
+          "image": null
+        },
+        {
+          "name": "counter-strike-file-tracker",
+          "description": "Track Counter-Strike 2 game files and parse them to JSON format.",
+          "tags": ["counter-strike"],
+          "demo": null,
+          "source": "https://github.com/ByMykel/counter-strike-file-tracker",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "experiments",
+      "title": "// experiments",
+      "description": "Small or weird projects to explore ideas and learn new technologies.",
+      "projects": [
+        {
+          "name": "spanish-cities",
+          "description": "NPM package with data about Spanish cities, provinces, and autonomous communities.",
+          "tags": ["npm"],
+          "demo": "https://bymykel.com/spanish-cities/",
+          "source": "https://github.com/ByMykel/spanish-cities",
+          "image": "img/spanish-cities.png"
+        },
+        {
+          "name": "valve-keyvalues-parser",
+          "description": "Parse and stringify Valve KeyValues/VDF format with online converter.",
+          "tags": [],
+          "demo": "https://bymykel.com/valve-keyvalues-parser/",
+          "source": "https://github.com/ByMykel/valve-keyvalues-parser",
+          "image": "img/valve-keyvalues-parser.png"
+        }
+      ]
+    }
+  ]
+}

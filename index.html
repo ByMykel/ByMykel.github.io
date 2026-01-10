@@ -3,16 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ByMykel - Open source developer building tools and APIs">
     <title>ByMykel</title>
-    <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background-color: #f5f5f5;
-            font-family: Arial, sans-serif;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div class="container">
+        <header class="header">
+            <div class="header-inner">
+                <a href="/" class="logo">bymykel</a>
+                <nav class="nav">
+                    <a href="https://github.com/ByMykel" target="_blank">github</a>
+                    <button class="theme-toggle" aria-label="Toggle theme">
+                        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                        </svg>
+                        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                    </button>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <p class="hero-prompt">$ whoami</p>
+                <h1 class="hero-title">Building things <span class="highlight">for the web</span></h1>
+                <p class="hero-bio">Web developer who loves building things that are fun and solve problems — especially for <span>Counter-Strike 2</span><span class="cursor"></span></p>
+            </section>
+
+
+            <section class="projects">
+                <h2 class="section-header">// featured</h2>
+                
+                <div class="projects-list">
+                    
+                    <article class="project">
+                        <div class="project-header">
+                            <div class="project-main">
+                                <h3 class="project-name">CSGO-API</h3>
+                                <p class="project-desc">Unofficial JSON API for Counter-Strike 2 in multiples languages. List of skins, cases, stickers, collections, collectibles, agents, graffiti, keys, patches and music kits.</p>
+                                <div class="project-tags">
+                                    <span class="tag">counter-strike</span><span class="tag">api</span><span class="tag">json</span>
+                                </div>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://bymykel.com/CSGO-API/" class="project-link primary" target="_blank">site</a>
+                                <a href="https://github.com/ByMykel/CSGO-API" class="project-link" target="_blank">src</a>
+                            </div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </section>
+
+            <section class="projects">
+                <h2 class="section-header">// personal</h2>
+                <p class="section-desc">Products built to provide solutions for various problems.</p>
+                <div class="projects-list">
+                    
+                    <article class="project">
+                        <div class="project-header">
+                            <div class="project-main">
+                                <h3 class="project-name">counter-strike-items</h3>
+                                <p class="project-desc">Browse all Counter-Strike 2 skins, knives, gloves, cases, collections, stickers, music kits, and more.</p>
+                                <div class="project-tags">
+                                    <span class="tag">counter-strike</span><span class="tag">vue</span>
+                                </div>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://bymykel.com/counter-strike-items/" class="project-link primary" target="_blank">site</a>
+                                <a href="https://github.com/ByMykel/counter-strike-items" class="project-link" target="_blank">src</a>
+                            </div>
+                        </div>
+                        <div class="project-image">
+                            <img src="img/counter-strike-items.png" alt="counter-strike-items preview">
+                        </div>
+                    </article>
+
+                    <article class="project">
+                        <div class="project-header">
+                            <div class="project-main">
+                                <h3 class="project-name">counter-strike-image-tracker</h3>
+                                <p class="project-desc">Track Counter-Strike 2 images.</p>
+                                <div class="project-tags">
+                                    <span class="tag">counter-strike</span>
+                                </div>
+                            </div>
+                            <div class="project-links">
+                                
+                                <a href="https://github.com/ByMykel/counter-strike-image-tracker" class="project-link" target="_blank">src</a>
+                            </div>
+                        </div>
+                        
+                    </article>
+
+                    <article class="project">
+                        <div class="project-header">
+                            <div class="project-main">
+                                <h3 class="project-name">counter-strike-file-tracker</h3>
+                                <p class="project-desc">Track Counter-Strike 2 game files and parse them to JSON format.</p>
+                                <div class="project-tags">
+                                    <span class="tag">counter-strike</span>
+                                </div>
+                            </div>
+                            <div class="project-links">
+                                
+                                <a href="https://github.com/ByMykel/counter-strike-file-tracker" class="project-link" target="_blank">src</a>
+                            </div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </section>
+
+            <section class="projects">
+                <h2 class="section-header">// experiments</h2>
+                <p class="section-desc">Small or weird projects to explore ideas and learn new technologies.</p>
+                <div class="projects-list">
+                    
+                    <article class="project">
+                        <div class="project-header">
+                            <div class="project-main">
+                                <h3 class="project-name">spanish-cities</h3>
+                                <p class="project-desc">NPM package with data about Spanish cities, provinces, and autonomous communities.</p>
+                                <div class="project-tags">
+                                    <span class="tag">npm</span>
+                                </div>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://bymykel.com/spanish-cities/" class="project-link primary" target="_blank">site</a>
+                                <a href="https://github.com/ByMykel/spanish-cities" class="project-link" target="_blank">src</a>
+                            </div>
+                        </div>
+                        <div class="project-image">
+                            <img src="img/spanish-cities.png" alt="spanish-cities preview">
+                        </div>
+                    </article>
+
+                    <article class="project">
+                        <div class="project-header">
+                            <div class="project-main">
+                                <h3 class="project-name">valve-keyvalues-parser</h3>
+                                <p class="project-desc">Parse and stringify Valve KeyValues/VDF format with online converter.</p>
+                                <div class="project-tags">
+                                    
+                                </div>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://bymykel.com/valve-keyvalues-parser/" class="project-link primary" target="_blank">site</a>
+                                <a href="https://github.com/ByMykel/valve-keyvalues-parser" class="project-link" target="_blank">src</a>
+                            </div>
+                        </div>
+                        <div class="project-image">
+                            <img src="img/valve-keyvalues-parser.png" alt="valve-keyvalues-parser preview">
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>$ echo "open source on <a href="https://github.com/ByMykel/ByMykel.github.io" target="_blank">github</a>"</p>
+        </footer>
+    </div>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
