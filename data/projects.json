@@ -56,14 +56,16 @@
           "description": "NPM package with data about Spanish cities, provinces, and autonomous communities.",
           "tags": ["npm"],
           "demo": "https://bymykel.com/spanish-cities/",
-          "source": "https://github.com/ByMykel/spanish-cities"
+          "source": "https://github.com/ByMykel/spanish-cities",
+          "image": "img/spanish-cities.png"
         },
         {
           "name": "valve-keyvalues-parser",
           "description": "Parse and stringify Valve KeyValues/VDF format with online converter.",
           "tags": [],
           "demo": "https://bymykel.com/valve-keyvalues-parser/",
-          "source": "https://github.com/ByMykel/valve-keyvalues-parser"
+          "source": "https://github.com/ByMykel/valve-keyvalues-parser",
+          "image": "img/valve-keyvalues-parser.png"
         }
       ]
     }
