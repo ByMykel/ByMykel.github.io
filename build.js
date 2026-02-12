@@ -7,14 +7,16 @@ const data = JSON.parse(fs.readFileSync('data/projects.json', 'utf8'));
 function generateProjects(sections) {
     return sections.map(section => `
             <section class="projects">
-                <h2 class="section-header">${section.title}</h2>
-                ${section.description ? `<p class="section-desc">${section.description}</p>` : ''}
+                <div class="section-heading">
+                    <h2 class="section-header">${section.title}</h2>
+                    ${section.description ? `<p class="section-desc">${section.description}</p>` : ''}
+                </div>
                 <div class="projects-list">
                     ${section.projects.map(project => `
                     <article class="project">
                         <div class="project-header">
                             <div class="project-main">
-                                <h3 class="project-name">${project.name}</h3>
+                                <h3 class="project-name">${project.name}${project.wip ? '<span class="wip-text">[wip]</span>' : ''}</h3>
                                 <p class="project-desc">${project.description}</p>
                                 <div class="project-tags">
                                     ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
@@ -22,7 +24,7 @@ function generateProjects(sections) {
                             </div>
                             <div class="project-links">
                                 ${project.demo ? `<a href="${project.demo}" class="project-link primary" target="_blank">site</a>` : ''}
-                                <a href="${project.source}" class="project-link" target="_blank">src</a>
+                                ${project.source ? `<a href="${project.source}" class="project-link" target="_blank">src</a>` : ''}
                             </div>
                         </div>
                         ${project.image ? `<div class="project-image">

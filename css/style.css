@@ -204,11 +204,14 @@ a:hover {
     padding-bottom: 4rem;
 }
 
+.section-heading {
+    margin-bottom: 1.5rem;
+}
+
 .section-header {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 0.5rem;
     color: var(--text-dim);
     font-size: 0.875rem;
 }
@@ -223,7 +226,7 @@ a:hover {
 .section-desc {
     color: var(--text-dim);
     font-size: 0.8rem;
-    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
 }
 
 .projects-list {
@@ -273,6 +276,11 @@ a:hover {
 .project-name::before {
     content: '>';
     color: var(--accent);
+}
+
+.wip-text {
+    color: var(--accent);
+    font-weight: 500;
 }
 
 .project-desc {
