@@ -82,15 +82,6 @@
           "demo": "https://bymykel.com/valve-keyvalues-parser/",
           "source": "https://github.com/ByMykel/valve-keyvalues-parser",
           "image": "img/valve-keyvalues-parser.png"
-        },
-        {
-          "name": "whatif",
-          "wip": true,
-          "description": "Interactive Formula 1 and MotoGP standings tracker with a \"What If\" calculator that shows what each driver or rider needs to win the title.",
-          "tags": [],
-          "demo": "https://whatif-racing.vercel.app/motogp/2026",
-          "source": null,
-          "image": "img/whatif.png"
         }
       ]
     }
