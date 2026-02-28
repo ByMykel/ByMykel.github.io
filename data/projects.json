@@ -73,7 +73,7 @@
           "tags": ["npm"],
           "demo": "https://bymykel.com/spanish-cities/",
           "source": "https://github.com/ByMykel/spanish-cities",
-          "image": "img/spanish-cities.png"
+          "image": null
         },
         {
           "name": "valve-keyvalues-parser",
@@ -81,7 +81,7 @@
           "tags": [],
           "demo": "https://bymykel.com/valve-keyvalues-parser/",
           "source": "https://github.com/ByMykel/valve-keyvalues-parser",
-          "image": "img/valve-keyvalues-parser.png"
+          "image": null
         }
       ]
     }
