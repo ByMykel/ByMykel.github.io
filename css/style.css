@@ -349,12 +349,6 @@ a:hover {
     width: 100%;
     height: auto;
     display: block;
-    opacity: 0.85;
-    transition: opacity 0.2s;
-}
-
-.project:hover .project-image img {
-    opacity: 1;
 }
 
 /* ========================================
