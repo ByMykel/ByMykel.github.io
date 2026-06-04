@@ -55,6 +55,7 @@ const html = `<!DOCTYPE html>
             <div class="header-inner">
                 <a href="/" class="logo">bymykel</a>
                 <nav class="nav">
+                    <a href="mailto:hi@bymykel.com">hi@bymykel.com</a>
                     <a href="https://github.com/ByMykel" target="_blank">github</a>
                     <button class="theme-toggle" aria-label="Toggle theme">
                         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
