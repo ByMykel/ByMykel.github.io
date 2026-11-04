@@ -1,18 +1,27 @@
-// Theme toggle
-const toggle = document.querySelector('.theme-toggle');
-const saved = localStorage.getItem('theme');
+const header = document.querySelector('.header');
+const darkBlocks = [...document.querySelectorAll('.block.tone-dark')];
 
-if (saved) document.documentElement.setAttribute('data-theme', saved);
+let ticking = false;
 
-toggle?.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme');
-    const next = current === 'light' ? null : 'light';
+function updateHeader() {
+    ticking = false;
+    const line = header.offsetHeight / 2;
+    const overDark = darkBlocks.some(block => {
+        const r = block.getBoundingClientRect();
+        return r.top <= line && r.bottom > line;
+    });
+    header.classList.toggle('tone-dark', overDark);
+}
 
-    if (next) {
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
-    } else {
-        document.documentElement.removeAttribute('data-theme');
-        localStorage.removeItem('theme');
+function onScroll() {
+    if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateHeader);
     }
-});
+}
+
+if (header && darkBlocks.length) {
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    updateHeader();
+}

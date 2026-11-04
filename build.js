@@ -3,36 +3,69 @@ const fs = require('fs');
 // Load project data
 const data = JSON.parse(fs.readFileSync('data/projects.json', 'utf8'));
 
-// Generate project HTML
-function generateProjects(sections) {
-    return sections.map(section => `
-            <section class="projects">
-                <div class="section-heading">
-                    <h2 class="section-header">${section.title}</h2>
-                    ${section.description ? `<p class="section-desc">${section.description}</p>` : ''}
-                </div>
-                <div class="projects-list">
-                    ${section.projects.map(project => `
-                    <article class="project">
-                        <div class="project-header">
-                            <div class="project-main">
-                                <h3 class="project-name">${project.name}${project.wip ? '<span class="wip-text">[wip]</span>' : ''}</h3>
-                                <p class="project-desc">${project.description}</p>
-                                <div class="project-tags">
-                                    ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                                </div>
+const pad = n => String(n).padStart(2, '0');
+
+const arrow = `<svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9L9 3M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>`;
+
+function layoutCards(projects) {
+    const out = [];
+    let run = [];
+    const flush = () => {
+        run.forEach((p, k) => {
+            const alone = k === run.length - 1 && run.length % 2 === 1;
+            out.push({ ...p, kind: alone ? 'wide' : 'half', left: !alone && k % 2 === 0 });
+        });
+        run = [];
+    };
+    projects.forEach(p => {
+        if (p.image) { flush(); out.push({ ...p, kind: 'media' }); }
+        else run.push(p);
+    });
+    flush();
+    return out;
+}
+
+function generateCard(project, n) {
+    const cls = ['card', `card-${project.kind}`, project.left ? 'card-left' : ''].filter(Boolean).join(' ');
+    return `
+                    <article class="${cls}">
+                        <div class="card-text">
+                            <div class="card-meta">
+                                <span class="label">${pad(n)}</span>
+                                ${project.wip ? '<span class="chip">In progress</span>' : ''}
                             </div>
-                            <div class="project-links">
-                                ${project.demo ? `<a href="${project.demo}" class="project-link primary" target="_blank">site</a>` : ''}
-                                ${project.source ? `<a href="${project.source}" class="project-link" target="_blank">src</a>` : ''}
+                            <h3 class="card-name">${project.name}</h3>
+                            <p class="card-desc">${project.description}</p>
+                            <div class="card-links">
+                                ${project.demo ? `<a href="${project.demo}" class="link" target="_blank" rel="noopener">Visit site ${arrow}</a>` : ''}
+                                ${project.source ? `<a href="${project.source}" class="link" target="_blank" rel="noopener">Source ${arrow}</a>` : ''}
                             </div>
                         </div>
-                        ${project.image ? `<div class="project-image">
-                            <img src="${project.image}" alt="${project.name} preview">
-                        </div>` : ''}
-                    </article>`).join('\n')}
+                        ${project.image ? `<figure class="card-image">
+                            <img src="${project.image}" alt="${project.name} preview" loading="lazy">
+                        </figure>` : ''}
+                    </article>`;
+}
+
+function generateProjects(sections) {
+    return sections.map((section, i) => {
+        const count = section.projects.length;
+        return `
+            <section class="block${section.tone === 'dark' ? ' tone-dark' : ''}" id="${section.id}">
+              <div class="frame">
+                <div class="block-head">
+                    <div class="block-meta">
+                        <span class="label">${pad(i + 1)} — ${section.title}</span>
+                        <span class="label">${count} project${count === 1 ? '' : 's'}</span>
+                    </div>
+                    <h2 class="block-title">${section.title}</h2>
+                    ${section.description ? `<p class="block-desc">${section.description}</p>` : ''}
                 </div>
-            </section>`).join('\n');
+                <div class="cards">${layoutCards(section.projects).map((p, j) => generateCard(p, j + 1)).join('')}
+                </div>
+              </div>
+            </section>`;
+    }).join('\n');
 }
 
 // HTML template
@@ -46,43 +79,32 @@ const html = `<!DOCTYPE html>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="header-inner">
-                <a href="/" class="logo">bymykel</a>
-                <nav class="nav">
-                    <a href="mailto:hi@bymykel.com">hi@bymykel.com</a>
-                    <a href="https://github.com/ByMykel" target="_blank">github</a>
-                    <button class="theme-toggle" aria-label="Toggle theme">
-                        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-                        </svg>
-                        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                        </svg>
-                    </button>
-                </nav>
+    <header class="header">
+        <div class="frame header-inner">
+            <a href="/" class="logo">ByMykel</a>
+            <nav class="nav">
+                <a href="#featured" class="label nav-link">Projects</a>
+                <a href="https://github.com/ByMykel" class="label nav-link" target="_blank" rel="noopener">GitHub</a>
+                <a href="mailto:hi@bymykel.com" class="button">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero frame">
+            <h1 class="hero-title">Building things for the web</h1>
+            <p class="hero-bio">Web developer who loves building things that are fun and solve problems — especially for Counter-Strike&nbsp;2.</p>
+            <div class="hero-actions">
+                <a href="mailto:hi@bymykel.com" class="button">hi@bymykel.com</a>
+                <a href="https://github.com/ByMykel" class="button button-ghost" target="_blank" rel="noopener">GitHub ${arrow}</a>
             </div>
-        </header>
-
-        <main>
-            <section class="hero">
-                <p class="hero-prompt">$ whoami</p>
-                <h1 class="hero-title">Building things <span class="highlight">for the web</span></h1>
-                <p class="hero-bio">Web developer who loves building things that are fun and solve problems — especially for <span>Counter-Strike 2</span><span class="cursor"></span></p>
-            </section>
-
+        </section>
 ${generateProjects(data.sections)}
-        </main>
-
-        <footer class="footer">
-            <p>$ echo "open source on <a href="https://github.com/ByMykel/ByMykel.github.io" target="_blank">github</a>"</p>
-        </footer>
-    </div>
+    </main>
 
     <script src="js/main.js"></script>
 </body>
