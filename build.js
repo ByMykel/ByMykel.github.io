@@ -74,7 +74,7 @@ const html = `<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ByMykel - Open source developer building tools and APIs">
+    <meta name="description" content="Web developer building fun tools that solve problems, mostly for Counter-Strike 2. Projects include CSGO-API, cratesmove and counter-strike-items.">
     <title>ByMykel</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
